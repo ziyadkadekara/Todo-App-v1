@@ -30,6 +30,10 @@ class _TodoAppState extends State<TodoApp> {
         title: const Center(child: Text("My Todo's")),
         elevation: 0,
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: const Icon(Icons.add),
+      ),
       body: ListView.builder(
         itemCount: toDoList.length,
         itemBuilder: (context, index) {
