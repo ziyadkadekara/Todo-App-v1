@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoappvi/util/dialog_box.dart';
 import '../util/todo_tile.dart';
 
 class TodoApp extends StatefulWidget {
@@ -22,6 +23,16 @@ class _TodoAppState extends State<TodoApp> {
     });
   }
 
+  //create new task function
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DialogBox();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +42,7 @@ class _TodoAppState extends State<TodoApp> {
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: createNewTask,
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(
