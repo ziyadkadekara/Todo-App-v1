@@ -1,7 +1,18 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
+import 'package:todoappvi/util/my_button.dart';
 
 class DialogBox extends StatelessWidget {
-  const DialogBox({super.key});
+  final controller;
+  VoidCallback onSave;
+  VoidCallback onCancel;
+  DialogBox({
+    super.key,
+    required this.controller,
+    required this.onSave,
+    required this.onCancel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,21 +20,26 @@ class DialogBox extends StatelessWidget {
       backgroundColor: Colors.yellow,
       content: Container(
         height: 120,
-        child: Column(children: [
+        child:
+            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           //get task name from user
           TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "Type your TODO",
-              ),
-              //save &cancel button
-              Row(
-                children: [
-                  //save button
+            controller: controller,
+            decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: "Type your TODO",
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              //save button
+              MyButton(text: "Save", onPressed: onSave),
 
-                  //cancel button
-                ],
-              )),
+              //cancel button
+              MyButton(text: "Cancel", onPressed: onCancel),
+            ],
+          )
         ]),
       ),
     );
